@@ -123,7 +123,8 @@ int main(int argc, char *argv[])
     while (true)
     {
 		struct battstate batt = read_battstate();
-        printf("%d %s\n", batt.percentage, batt.charging ? "charging" : "not charging");
+        if (!daemon)
+            printf("%d %s\n", batt.percentage, batt.charging ? "charging" : "not charging");
 		if ((batt.percentage <= triggerpercent) && batt.charging != CHARGING)
 		{
 			if (*trigger == '\0')

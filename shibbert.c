@@ -12,15 +12,20 @@
  * WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN
  * ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF OR IN
  * CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
+
  */
+#include <stdbool.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+
 #include <unistd.h>
 
 #define BATPATH "/sys/class/power_supply/BAT0/capacity"
 #define CHARGINGPATH "/sys/class/power_supply/AC/online"
 #define max(x, y) (((x) > (y) ? (x) : (y)))
+
+bool daemon;
 
 enum acstate
 {
@@ -70,9 +75,10 @@ struct battstate read_battstate(void)
 int main(void)
 {
     unsigned int triggerpercent = TRIG_PERCENT;
+
     struct battstate batt = read_battstate();
     char *home = getenv("HOME");
-
+    
     if ((batt.percentage <= triggerpercent) && batt.charging != CHARGING)
     {
 	int trigger_l = max(strlen(home) + strlen("/.hibbertt"), strlen("/etc/hibbertt")) + 1;
