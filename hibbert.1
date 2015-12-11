@@ -1,0 +1,38 @@
+.TH HIBBERT 1
+.SH NAME
+hibbert \- run a trigger script when battery drops to a certain level
+.SH SYNOPSIS
+.B hibbert
+[\fB\-nh\fR]
+[\fB-p\fR \fIPERCENTAGE\fR]
+[\fB-t\fR \fITRIGGER\fR]
+.SH DESCRIPTION
+.B hibbert
+Hibbert monitors battery status and triggers shell scripts when the battery drops to a certain level and isn't plugged in, usually to hibernate. Hibbert assumes that the user has the privileges to run the commands contained in their trigger.
+.SH OPTIONS
+.TP
+.BR \-n
+Don't daemonize, instead stay attached to the shell.\fR
+.TP
+.BR \-h
+Display help.\fR
+.TP
+.BR \-p\ \fIPERCENTAGE\fR
+Set the battery percentage to trigger at.
+Default is 5 percent.
+.TP
+.BR \-t\ \fITRIGGER\fR
+Set the trigger to run.
+Defaults to $HOME/.hibertt if it exists, otherwise /etc/hibbertt
+.BR \-i\ \fIINTERVAL\fR
+Set the interval at which to check battery status in seconds.
+Defaults to 60 (1 minute.)
+.SH FILES
+.TP
+/etc/hibbertt
+Backup trigger.
+.TP
+~/.hibbertt
+Personal hibbert trigger.
+.PP
+Both files are just scripts executed with /bin/sh

@@ -1,0 +1,17 @@
+.TH SHIBBERT 1
+.SH NAME
+shibbert \- Run a trigger script if battery is below a certain level
+.SH SYNOPSIS
+.B shibbert
+.SH DESCRIPTION
+.B shibbert
+Shibbert checks the current battery status and runs a shell script at ~/.hibbertt or /etc/hibbertt if the former doesn't exist. You probably want to use this from cron.
+.SH FILES
+.TP
+/etc/hibbertt
+Backup trigger.
+.TP
+~/.hibbertt
+Personal hibbert trigger.
+.PP
+Both files are just scripts executed with /bin/sh
