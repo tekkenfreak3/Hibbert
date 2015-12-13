@@ -13,6 +13,6 @@ install: hibbert doc shibbert
 	install hibbert $(DESTDIR)/bin
 	install shibbert $(DESTDIR)/bin
 	install hibbert.1.gz $(MANDIR)/man1/
-	install hibbertt /etc/
+	if [ ! -e /etc/hibbertt ]; then install hibbertt /etc/; fi
 clean:
 	rm -f hibbert hibbert.1.gz shibbert shibbert.1.gz
