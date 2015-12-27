@@ -73,7 +73,7 @@ void usage(void)
 int main(int argc, char *argv[])
 {
     bool daemon = true;
-    unsigned int triggerpercent = 5;
+    unsigned int triggerpercent = 10;
     unsigned int interval = 60; // 1 minute default poll time
     char const *home = getenv("HOME"); // prevent time of check/time of use
     char const *shell = "/bin/sh -c";
